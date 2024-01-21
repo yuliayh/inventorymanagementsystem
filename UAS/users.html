@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+      .navbar-brand {
+            font-size: 2rem;
+        }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">INVENTORY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="suppliers.html">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="items.html">Items </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="itemsin.html">Items In</a>
+                </li>
+				        <li class="nav-item">
+                    <a class="nav-link" href="itemsout.html">Items Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="databasesync.html">Database Sync</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="index.html"><button type="button">Logout</button></a>
+              </li>
+              </ul>
+        </div>
+        </nav>
+        <br>
+        <table>
+            <tr>
+              <th>No</th>
+              <th>Avatar</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Email</th>
+              <th>Nama</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td><img src="avatar1.jpg" alt="alt" width="100" height="auto"></td>
+              <td>Admin</td>
+              <td>********</td>
+              <td>admin@example.com</td>
+              <td>Alana Liora Salsabila</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><img src="avatar2.jpg" alt="alt" width="100" height="auto"></td>
+              <td>User</td>
+              <td>********</td>
+              <td>user@example.com</td>
+              <td>Aubrey Fathia Pelangi</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><img src="avatar1.jpg" alt="alt" width="100" height="auto"></td>
+                <td>Admin</td>
+                <td>********</td>
+                <td>admin@example.com</td>
+                <td>Aisha Aileen Nathania</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><img src="avatar2.jpg" alt="alt" width="90" height="auto"></td>
+                <td>User</td>
+                <td>********</td>
+                <td>user@example.com</td>
+                <td>Astrid Rahdian Amanda</td>
+              </tr>
+          </table>
+          <br>
+          <button onclick="document.getElementById('myModal').style.display='block'">(+) ADD USERS</button>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span onclick="document.getElementById('myModal').style.display='none'" style="float: right; cursor: pointer;">&times;</span>
+              <h2>ADD USER</h2>
+              <form action="/action_page.php" class="form-container">
+                <label for="username"><b>Username</b></label><br>
+                <input type="text" placeholder="Enter Username" name="username" required><br>
+                <label for="psw"><b>Password</b></label><br>
+                <input type="password" placeholder="Enter Password" name="psw" required><br>
+                <label for="email"><b>Email</b></label><br>
+                <input type="text" placeholder="Enter Email" name="email" required><br>
+                <label for="nama"><b>Nama Lengkap</b></label><br>
+                <input type="text" placeholder="Enter Nama" name="nama" required><br>
+                <label for="avatar"><b>Avatar</b></label><br>
+                <input type="file" id="avatar" name="avatar" accept="image/*"><br>
+                <label for="avatar"></label><br>
+                <button type="submit" class="btn">Login</button><br>
+                <button type="button" class="btn cancel" onclick="document.getElementById('myModal').style.display='none'">Close</button><br>
+              </form>
+            </div>
+          </div>
+</body>
+<script>
+  // Close the modal when the user clicks outside of the modal
+  window.onclick = function(event) {
+    var modal = document.getElementById('myModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+</html>

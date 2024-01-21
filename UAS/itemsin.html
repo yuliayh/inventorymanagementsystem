@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-size: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold; /* Menjadikan teks pada th menjadi tebal */
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+         .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">INVENTORY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="suppliers.html">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="items.html">Items </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="itemsin.html">Items In</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="itemsout.html">Items Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="databasesync.html">Database Sync</a>
+                </li>
+            </ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				  <a href="index.html"><button type="button">Logout</button></a>
+				</li>
+			  </ul>
+        </div>
+        </nav>
+
+    <div class="container">
+        <h2>ITEMS IN</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th>Added</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>10</td>
+                    <td>Mouse 3</td>
+                    <td>Mouse</td>
+                    <td>Room 1</td>
+                    <td>100</td>
+                    <td>01-01-2024</td>
+                    <td>Succeed</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>Monitor 3</td>
+                    <td>Monitor</td>
+                    <td>Room 2</td>
+                    <td>100</td>
+                    <td>01-01-2024</td>
+                    <td>Succeed</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>Mouse 3</td>
+                    <td>Mouse</td>
+                    <td>Room 3</td>
+                    <td>100</td>
+                    <td>19-02-2024</td>
+                    <td>Succeed</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>Mouse 3</td>
+                    <td>Mouse</td>
+                    <td>Room 3</td>
+                    <td>100</td>
+                    <td>19-02-2024</td>
+                    <td>Succeed</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>9</td>
+                    <td>Printer 1</td>
+                    <td>Printer</td>
+                    <td>Room 5</td>
+                    <td>150</td>
+                    <td>20-02-2024</td>
+                    <td>Succeed</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>10</td>
+                    <td>Printer 2</td>
+                    <td>Printer</td>
+                    <td>Room 3</td>
+                    <td>100</td>
+                    <td>20-02-2024</td>
+                    <td>Succeed</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+          <button onclick="document.getElementById('myModal').style.display='block'">(+) ADD ITEMS</button>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span onclick="document.getElementById('myModal').style.display='none'" style="float: right; cursor: pointer;">&times;</span>
+              <h2>ADD ITEMS</h2>
+              <form action="/action_page.php" class="form-container">
+                <label for="id"><b>ID</b></label><br>
+                <input type="number" placeholder="Enter ID" name="id" required><br>
+                <label for="name"><b>Name</b></label><br>
+                <input type="text" placeholder="Enter Name" name="name" required><br>
+                <label for="kategori"><b>Category</b></label><br>
+                <input type="text" placeholder="Enter Category" name="category" required><br>
+                <label for="loc"><b>Location</b></label><br>
+                <input type="text" placeholder="Enter Location" name="loc" required><br>
+                <label for="Qty"><b>Quantity</b></label><br>
+                <input type="number" placeholder="Enter Category" name="Qty" required><br>
+                <label for="Date"><b>Added Date</b></label><br>
+                <input type="date" placeholder="Enter Date" name="date" required><br>
+                <button type="submit" class="btn">Submit</button><br>
+                <button type="button" class="btn cancel" onclick="document.getElementById('myModal').style.display='none'">Close</button><br>
+              </form>
+            </div>
+         </div>
+    </body>
+    </html>

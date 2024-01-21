@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-size: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+         .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">INVENTORY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="suppliers.html">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="items.html">Items </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="itemsin.html">Items In</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="itemsout.html">Items Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="databasesync.html">Database Sync</a>
+                </li>
+            </ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				  <a href="index.html"><button type="button">Logout</button></a>
+				</li>
+			  </ul>
+        </div>
+        </nav>
+
+    <div class="container">
+        <h2>SUPPLIERS</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Suppliers</th>
+                    <th>Transaction Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Erika Carlina</td>
+                    <td>June 22, 2023</td>
+                    <td>$23,490</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Rachel Vennya</td>
+                    <td>June 20, 2023</td>
+                    <td>$32,000</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Fadil Jaidi</td>
+                    <td>June 17, 2023</td>
+                    <td>$24,600</td>
+                    <td>Unpaid</td>
+                </tr>
+                <tr>
+                    <td>Iqbal Ramadhan</td>
+                    <td>June 16,2023</td>
+                    <td>$31-040</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Kiki Saputri</td>
+                    <td>June 15, 2023</td>
+                    <td>$23,490</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Elsa Japassal</td>
+                    <td>June 12, 2023</td>
+                    <td>$32,000</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Ria Ricis</td>
+                    <td>June 11, 2023</td>
+                    <td>$24,600</td>
+                    <td>Unpaid</td>
+                </tr>
+                <tr>
+                    <td>Jessica Jane</td>
+                    <td>June 08,2023</td>
+                    <td>$31-040</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Jess No Limit</td>
+                    <td>June 05, 2023</td>
+                    <td>$24,600</td>
+                    <td>Unpaid</td>
+                </tr>
+                <tr>
+                    <td>Sisca Kolh</td>
+                    <td>June 03,2023</td>
+                    <td>$31-040</td>
+                    <td>Paid</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+          <button onclick="document.getElementById('myModal').style.display='block'">(+) ADD SUPPLIERS</button>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span onclick="document.getElementById('myModal').style.display='none'" style="float: right; cursor: pointer;">&times;</span>
+              <h2>ADD SUPPLIERS</h2>
+              <form action="/action_page.php" class="form-container">
+                <label for="name"><b>Name Suppliers</b></label><br>
+                <input type="text" placeholder="Enter Suppliers" name="name" required><br>
+                <label for="Date"><b>Date</b></label><br>
+                <input type="date" placeholder="Enter Transaction Date" name="Date" required><br>
+                <label for="amount"><b>Amount</b></label><br>
+                <input type="number" step="0.01" placeholder="Enter Amount" name="amount" required><br>
+                <label for="status"><b>Status</b></label><br>
+                <select name="status" required>
+                    <option value="paid">Paid</option>
+                    <option value="unpaid">Unpaid</option>
+                  </select><br>
+                <button type="submit" class="btn">Submit</button><br>
+                <button type="button" class="btn cancel" onclick="document.getElementById('myModal').style.display='none'">Close</button><br>
+              </form>
+            </div>
+         </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        // Close the modal when the user clicks outside of the modal
+        window.onclick = function(event) {
+          var modal = document.getElementById('myModal');
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
+</body>
+</html>
